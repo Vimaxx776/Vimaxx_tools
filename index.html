@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080f25">
+<title>VIMAXX • Vip Tools</title>
+<style>
+:root{--bg:#080d20;--panel:#111c3b;--panel2:#152347;--line:#263d78;--blue:#438cff;--blue2:#66a4ff;--muted:#8294c4;--text:#edf3ff;--green:#38d6a0;--gold:#ffbd4a;--shadow:0 12px 32px #02071899}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#1c2c59 0%,#0b1430 42%,#070b19 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{max-width:1180px;margin:auto;min-height:100vh;padding-bottom:86px}
+.topbar{height:76px;display:flex;align-items:center;gap:14px;padding:0 22px;background:#101b3beF;border-bottom:1px solid #29447f;position:sticky;top:0;z-index:10;backdrop-filter:blur(18px)}
+.iconbtn{width:42px;height:42px;border:1px solid #2b4784;background:#15264e;color:#80b2ff;border-radius:13px;font-size:20px}
+.brandmark{width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,#5ba3ff,#1557d9);display:grid;place-items:center;font-size:24px;box-shadow:0 0 24px #347cff66}
+.brand{font-size:21px;font-weight:850;letter-spacing:-.7px}.brand span{color:#65a5ff}.top-spacer{flex:1}.top-actions{display:flex;gap:8px}.top-actions button{border:1px solid #263e75;background:#152449;color:#82b5ff;border-radius:50px;padding:10px 13px}
+.hero{padding:28px 22px 12px}.eyebrow{color:#75aaff;font-size:11px;letter-spacing:2px;font-weight:800}.hero h1{font-size:clamp(27px,5vw,42px);margin:7px 0 6px;letter-spacing:-1.5px}.hero p{color:var(--muted);margin:0;font-size:14px}
+.searchwrap{padding:14px 22px 22px}.searchbox{display:flex;align-items:center;gap:12px;padding:0 18px;height:58px;border-radius:18px;background:#111d3d;border:1px solid #2b4784;box-shadow:0 0 25px #1d59c522}.searchbox span{font-size:21px;color:#75aaff}.searchbox input{background:transparent;border:0;outline:0;color:white;width:100%;font-size:16px}.searchbox input::placeholder{color:#7385b4}
+.filters{display:flex;gap:10px;flex-wrap:wrap;padding:0 22px 22px}.filter{border:1px solid #263e78;background:#111d3b;color:#8298cc;border-radius:30px;padding:11px 17px;font-size:12px;font-weight:800;letter-spacing:.4px;transition:.2s}.filter.active,.filter:hover{background:linear-gradient(120deg,#438cff,#2568e7);color:white;border-color:#6daaff;box-shadow:0 5px 18px #347cff44}
+.section-head{display:flex;align-items:center;justify-content:space-between;padding:5px 22px 14px}.section-head h2{font-size:20px;letter-spacing:.5px;margin:0}.count{color:#7eaaff;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:0 22px 30px}
+.tool{min-height:198px;background:linear-gradient(150deg,#152448,#111b38);border:1px solid #243d76;border-radius:25px;padding:22px 15px 17px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:center}
+.tool:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,#3f82ff14,transparent 65%);pointer-events:none}.tool:hover{transform:translateY(-4px);border-color:#4b8eff;box-shadow:0 14px 34px #1b5ed044}
+.tool .ico{font-size:31px;color:#559bff;line-height:1.2;margin-bottom:15px;filter:drop-shadow(0 0 9px #438cff55)}
+.tool h3{font-size:14px;margin:0 0 10px;font-weight:750}.tool p{font-size:13px;color:#8496c2;margin:0;min-height:34px;line-height:1.4}.tag{font-size:10px;font-weight:850;letter-spacing:.7px;color:#77b2ff;background:#1b376e;border-radius:30px;padding:6px 12px;margin-top:11px}.tag.gold{color:#ffd17c;background:#493718}.arrow{margin-top:auto;padding-top:12px;color:#7799db;font-size:21px}
+.empty{grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--muted);border:1px dashed #2a447a;border-radius:20px}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;height:75px;background:#101b3bf2;border-top:1px solid #263e78;display:flex;justify-content:center;z-index:12;backdrop-filter:blur(16px)}.navinner{width:min(100%,760px);display:flex;justify-content:space-around}.navitem{border:0;background:none;color:#7588bd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:70px;font-size:11px}.navitem b{font-size:23px;font-weight:500}.navitem.active{color:#69a7ff}
+.overlay{position:fixed;inset:0;background:#020617c9;display:none;align-items:center;justify-content:center;padding:18px;z-index:30;backdrop-filter:blur(8px)}.overlay.show{display:flex}.modal{width:min(100%,560px);max-height:88vh;overflow:auto;background:#111d3b;border:1px solid #3b5fa5;border-radius:24px;box-shadow:0 25px 80px #000b;padding:22px;animation:pop .2s ease}.modalhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.modalhead h2{font-size:20px;margin:0}.close{border:0;border-radius:10px;background:#1c2d54;color:#a8c7ff;font-size:21px;width:36px;height:36px}.modal p{color:var(--muted);font-size:13px;line-height:1.5}.field{width:100%;background:#0b1530;border:1px solid #2a447b;border-radius:12px;padding:13px;color:white;outline:none;margin:7px 0 12px}.field:focus{border-color:#5798ff}.action{border:0;background:linear-gradient(120deg,#4b96ff,#2867e8);color:white;border-radius:12px;padding:12px 16px;font-weight:750}.secondary{background:#1b2b50;border:1px solid #34518b;color:#a9caff}.result{padding:14px;background:#0a1530;border:1px solid #2a447b;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;color:#dce9ff;margin-top:12px;min-height:44px}.row{display:flex;gap:9px;flex-wrap:wrap}.row>*{flex:1}.note{border-left:3px solid #4d91ff;padding:10px 12px;background:#14264a;color:#a9bee9;border-radius:8px;font-size:12px;margin:12px 0}
+footer{text-align:center;color:#5e719f;font-size:11px;padding:8px 20px 28px}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:620px){.topbar{height:68px;padding:0 14px}.top-actions button:not(:last-child){display:none}.hero{padding:24px 18px 10px}.searchwrap{padding:12px 18px 18px}.filters{padding:0 18px 20px;gap:8px}.filter{padding:10px 13px;font-size:11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 14px 24px}.tool{min-height:185px;padding:19px 10px 14px;border-radius:21px}.tool h3{font-size:13px}.tool p{font-size:12px}.section-head{padding-left:18px;padding-right:18px}.brand{font-size:19px}.brandmark{width:43px;height:43px}}
+@media(max-width:360px){.grid{gap:9px;padding-left:10px;padding-right:10px}.tool{min-height:175px}.filter{padding:9px 10px}}
+
+body.light{--bg:#edf3ff;--panel:#fff;--panel2:#e8efff;--text:#142344;background:#edf3ff;color:#142344}
+body.light .topbar,body.light .bottomnav{background:#e7efffF2}
+body.light .tool,body.light .searchbox{background:#fff;color:#142344}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+<button class="iconbtn" id="menuBtn" aria-label="Menu">☰</button>
+<div class="brandmark">ϟ</div><div class="brand">Vip <span>Tools</span></div>
+<div class="top-spacer"></div>
+<div class="top-actions"><button title="Tema" id="themeBtn">◐</button><button title="Musik" id="musicBtn">♫</button><button title="Muat ulang" id="refreshBtn">⟳</button><button id="accountBtn">♙ Akun</button><button id="chatBtn">● Chat</button></div>
+</header>
+<section class="hero"><div class="eyebrow">VIMAXX DIGITAL TOOLKIT</div><h1>Semua tools, satu tempat.</h1><p>Kumpulan utilitas praktis dengan tampilan modern dan ringan.</p></section>
+<section style="padding:8px 22px 18px">
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<a id="channel1" href="#" target="_blank" rel="noopener" style="flex:1;min-width:135px;text-align:center;text-decoration:none;padding:12px 15px;border-radius:14px;background:linear-gradient(120deg,#167a54,#0c6042);border:1px solid #32b982;color:white;font-weight:800;font-size:13px">☘ Saluran 1</a>
+<a id="channel2" href="#" target="_blank" rel="noopener" style="flex:1;min-width:135px;text-align:center;text-decoration:none;padding:12px 15px;border-radius:14px;background:linear-gradient(120deg,#2467c8,#174b9b);border:1px solid #5799ff;color:white;font-weight:800;font-size:13px">☘ Saluran 2</a>
+</div></section>
+<div class="searchwrap"><label class="searchbox"><span>⌕</span><input id="search" placeholder="Cari tools..." autocomplete="off"><span style="font-size:12px;opacity:.5">⌘K</span></label></div>
+<div class="filters" id="filters"></div>
+<div class="section-head"><h2 id="sectionTitle">▦ Semua Tools</h2><span class="count" id="count"></span></div>
+<main class="grid" id="grid"></main>
+<footer>VIMAXX • VIP TOOLS — dibuat untuk produktivitas dan kreativitas.</footer>
+</div>
+<nav class="bottomnav"><div class="navinner">
+<button class="navitem active" data-nav="home"><b>⌂</b>Beranda</button><button class="navitem" data-nav="tools"><b>▣</b>Tools</button><button class="navitem" data-nav="profile"><b>♙</b>Profil</button><button class="navitem" data-nav="chat"><b>●</b>Chat</button>
+</div></nav>
+<div class="overlay" id="overlay"><section class="modal"><div class="modalhead"><h2 id="modalTitle">Tool</h2><button class="close" id="closeModal">×</button></div><div id="modalBody"></div></section></div>
+<script>
+const tools=[
+["Instagram","Download video & foto","↓","Downloader","LINK","Masukkan tautan postingan. Buka Instagram untuk melihat atau menyimpan konten melalui fitur resmi."],
+["TikTok","Video tanpa watermark*","♪","Downloader","MP4","Gunakan fitur berbagi atau simpan resmi dari TikTok. *Ketersediaan tergantung izin pemilik konten."],
+["YouTube","Video & audio","▶","Downloader","MP4/MP3","Buka YouTube dan gunakan opsi unduhan resmi yang tersedia."],
+["IQC Generator","Buat gambar IQC","▧","Maker","CUSTOM","Buat kartu percakapan fiktif untuk desain atau konten kreatif."],
+["Windows Quotes","Quote ala Windows","▦","Maker","NEW!","Buat kutipan singkat dengan gaya kartu Windows."],
+["Tanya Ustad","Tanya seputar agama","♟","Extra","INFO","Susun pertanyaan untuk didiskusikan dengan guru atau pembimbing tepercaya."],
+["Sertifikat Tolol","Buat sertifikat lucu","✹","Maker","NEW!","Buat sertifikat humor untuk teman dengan label bercanda."],
+["BRAT Generator","Buat teks gaya BRAT","A","Maker","NEW!","Ubah teks menjadi kartu tipografi hijau bergaya pop."],
+["Fake IG","Mockup profil Instagram","◎","Maker","DEMO","Buat mockup profil fiktif. Tidak terhubung ke Instagram dan tidak mengumpulkan akun."],
+["QR Generator","Buat QR code","▦","Maker","INSTANT","Buat QR code untuk tautan atau teks."],
+["Calculator","Hitung cepat","▦","Tools","MATH","Kalkulator sederhana."],
+["Password Gen","Password acak","⚿","Tools","SECURE","Buat kata sandi acak langsung di perangkat."],
+["Morse Code","Konversi kode Morse","◇","Tools","AUDIO","Konversi teks ke kode Morse dan sebaliknya."],
+["Remove BG","Panduan hapus background","◇","Tools","IMAGE","Lihat panduan menggunakan editor gambar tepercaya."],
+["Image Enhancer","Tingkatkan kualitas gambar","✎","Tools","IMAGE","Tips memperbaiki kualitas gambar tanpa mengubah identitas orang."],
+["Fake FF","Mockup statistik game","♨","Maker","DEMO","Mockup tampilan game fiktif dengan label DEMO."],
+["Get Code HTML","Editor HTML mini","‹/›","Developer","CODE","Tulis HTML/CSS/JS dan lihat pratinjau lokal."],
+["Foto To Link","Bagikan foto","▧","Tools","LOCAL","Buat pratinjau dan salin data gambar lokal; tidak diunggah ke server."],
+["Hand Trick","Panduan gesture tangan","✋","Extra","GUIDE","Ide gesture tangan untuk foto atau animasi."],
+["Phishing Get Foto","Edukasi anti-phishing","▣","Security","SAFE","Pelajari tanda tautan palsu dan cara melindungi foto pribadi. Tidak membuat halaman phishing."],
+["Interaktif Hand","Demo gesture","✌","Extra","DEMO","Animasi gesture sederhana."],
+["Face Call","Mockup panggilan","☎","Maker","DEMO","Simulasi antarmuka panggilan fiktif, tanpa menelepon siapa pun."],
+["Chat Anonim","Ruang chat lokal","♟","Extra","LOCAL","Catatan chat anonim lokal untuk demo; tidak mengirim pesan ke orang lain."],
+["Fake MI","Mockup game UI","▯","Maker","DEMO","Mockup antarmuka game fiktif."],
+["Anime Quotes","Kutipan anime","❞","Extra","QUOTE","Kumpulan kutipan orisinal bernuansa anime."],
+["Pink Void","Tema estetis pink","♥","Maker","THEME","Buat palet warna dan wallpaper CSS pink."],
+["Get HTML/CSS/JS","Editor kode privat","‹/›","Developer","CODE","Editor kode berjalan lokal di browser."],
+["Fake Bank Jago","Demo UI finansial","▤","Maker","DEMO","Mockup edukasi antarmuka finansial dengan watermark DEMO. Tidak menerima data atau transaksi."],
+["Fake Dana","Demo e-wallet","▱","Maker","DEMO","Mockup edukasi dompet digital dengan watermark DEMO. Tidak menerima PIN atau OTP."],
+["All In One Downloader","Pusat tautan resmi","⇩","Downloader","LINKS","Kumpulan tautan ke platform dan opsi unduhan resmi."],
+["Stalk Game","Privasi akun game","♧","Security","SAFE","Tips mengatur privasi dan keamanan akun game."],
+["Stalk Sosmed","Cek keamanan sosmed","•","Security","SAFE","Panduan keamanan dan privasi akun media sosial."],
+["Unit Converter","Konversi satuan","⇄","Tools","MATH","Konversi panjang, berat, dan suhu."],
+["Notes","Catatan cepat","▤","Tools","LOCAL","Catatan sementara yang tersimpan di browser."],
+["Color Picker","Pilih warna","◉","Maker","DESIGN","Ambil kode warna untuk desain."],
+["Text Case","Ubah format teks","Aa","Tools","TEXT","Ubah teks menjadi uppercase, lowercase, atau title case."]
+];
+const categories=["ALL","DOWNLOADER","MAKER","TOOLS","EXTERNAL","EXTRA","XVIP","TELEGRAM"];
+const filters=document.getElementById('filters'),grid=document.getElementById('grid'),search=document.getElementById('search');
+let category="ALL";
+function renderFilters(){filters.innerHTML=categories.map(c=>`<button class="filter ${category===c?'active':''}" data-cat="${c}">${c==="ALL"?"▦ ":c==="DOWNLOADER"?"♧ ":c==="MAKER"?"✣ ":c==="TOOLS"?"⚒ ":c==="EXTERNAL"?"↗ ":c==="EXTRA"?"✚ ":c==="XVIP"?"♛ ":"● "}${c}</button>`).join('');}
+function render(){const q=search.value.toLowerCase();let list=tools.filter(t=>(category==="ALL"||(category==="XVIP"?["DEMO","SAFE"].includes(t[4]):category==="TELEGRAM"?false:category==="EXTERNAL"?t[3]==="Downloader":t[3].toUpperCase()===category))&&t.slice(0,2).join(" ").toLowerCase().includes(q));document.getElementById('sectionTitle').textContent=(category==="ALL"?"▦ Semua Tools":category+" Tools");document.getElementById('count').textContent=`(${list.length})`;grid.innerHTML=list.length?list.map((t,i)=>`<button class="tool" data-tool="${tools.indexOf(t)}"><span class="ico">${t[2]}</span><h3>${t[0]}</h3><p>${t[1]}</p><span class="tag ${t[4]==='DEMO'?'gold':''}">${t[4]}</span><span class="arrow">→</span></button>`).join(''):'<div class="empty">Tidak ada tools yang cocok dengan pencarian.</div>';}
+filters.addEventListener('click',e=>{let b=e.target.closest('[data-cat]');if(b){category=b.dataset.cat;renderFilters();render();}});
+search.addEventListener('input',render);grid.addEventListener('click',e=>{let b=e.target.closest('[data-tool]');if(b)openTool(tools[+b.dataset.tool]);});
+const overlay=document.getElementById('overlay'),modalTitle=document.getElementById('modalTitle'),modalBody=document.getElementById('modalBody');
+function openTool(t){modalTitle.textContent=t[0];modalBody.innerHTML=`<p>${t[5]}</p>${toolUI(t[0])}`;overlay.classList.add('show');wireTool(t[0]);}
+function toolUI(n){
+if(n==="Password Gen")return `<label>Panjang password</label><input class="field" id="plen" type="number" min="8" max="64" value="18"><label><input id="symbols" type="checkbox" checked> Sertakan simbol</label><button class="action" id="generate">Generate</button><div class="result" id="out"></div><button class="action secondary" id="copyOut">Salin</button>`;
+if(n==="Morse Code")return `<select class="field" id="direction"><option value="encode">Teks → Morse</option><option value="decode">Morse → Teks</option></select><textarea class="field" id="source" rows="3" placeholder="Tulis teks atau kode Morse..."></textarea><button class="action" id="convert">Konversi</button><div class="result" id="out"></div><button class="action secondary" id="copyOut">Salin</button>`;
+if(n==="Calculator")return `<input class="field" id="calc" placeholder="Contoh: (12+8)*3"><button class="action" id="calculate">Hitung</button><div class="result" id="out"></div>`;
+if(n==="QR Generator")return `<input class="field" id="qrtext" placeholder="Masukkan teks atau URL"><button class="action" id="makeqr">Buat QR</button><div id="qrout" class="result">QR akan dibuat memakai layanan pihak ketiga. Jangan masukkan data pribadi.</div>`;
+if(n==="BRAT Generator"||n==="Windows Quotes"||n==="Sertifikat Tolol"||n==="Anime Quotes")return `<textarea class="field" id="source" rows="3" placeholder="Tulis teks..."></textarea><button class="action" id="makeText">Buat</button><div class="result" id="out"></div><button class="action secondary" id="copyOut">Salin</button>`;
+if(n==="Get Code HTML"||n==="Get HTML/CSS/JS")return `<textarea class="field" id="code" rows="8" placeholder="Tulis kode HTML di sini...">&lt;h1&gt;Halo VIMAXX!&lt;/h1&gt;\n&lt;p&gt;Mulai kreasimu.&lt;/p&gt;</textarea><div class="row"><button class="action" id="preview">Preview</button><button class="action secondary" id="copyCode">Salin kode</button></div><iframe id="previewFrame" title="Pratinjau kode" sandbox style="width:100%;height:180px;background:white;border:1px solid #34518b;border-radius:12px;margin-top:12px"></iframe>`;
+if(n==="Text Case")return `<textarea class="field" id="source" rows="3" placeholder="Tulis teks..."></textarea><div class="row"><button class="action" data-case="upper">UPPERCASE</button><button class="action" data-case="lower">lowercase</button><button class="action" data-case="title">Title Case</button></div><div class="result" id="out"></div>`;
+if(n==="Unit Converter")return `<input class="field" id="amount" type="number" value="1"><select class="field" id="unit"><option value="km">Kilometer → Meter</option><option value="kg">Kilogram → Gram</option><option value="c">Celsius → Fahrenheit</option></select><button class="action" id="convertUnit">Konversi</button><div class="result" id="out"></div>`;
+if(n==="Color Picker")return `<input class="field" id="color" type="color" value="#438cff"><div class="result" id="out">#438cff</div>`;
+if(n==="Notes")return `<textarea class="field" id="note" rows="6" placeholder="Tulis catatan lokal..."></textarea><button class="action" id="saveNote">Simpan di browser</button><div class="result" id="out"></div>`;
+if(n==="Foto To Link")return `<input class="field" id="photo" type="file" accept="image/*"><div class="result" id="out">Pilih gambar. Data gambar tetap di perangkat dan tidak diunggah.</div><button class="action secondary" id="copyOut">Salin data</button>`;
+if(n==="IQC Generator"||n==="Fake IG"||n==="Fake FF"||n==="Face Call"||n==="Fake MI"||n==="Fake Bank Jago"||n==="Fake Dana")return `<div class="note">DEMO / MOCKUP — tampilan fiktif untuk desain. Tidak terhubung ke layanan asli. Jangan masukkan kata sandi, PIN, OTP, atau data pribadi.</div><input class="field" id="mockname" placeholder="Nama tampilan fiktif"><button class="action" id="mock">Tampilkan mockup</button><div class="result" id="out">[ DEMO PREVIEW ]</div>`;
+if(n==="Remove BG"||n==="Image Enhancer")return `<div class="note">Untuk menjaga privasi, gunakan editor tepercaya dan periksa kebijakan penyimpanan gambar sebelum mengunggah foto.</div><p>Tips: simpan salinan asli, gunakan resolusi tinggi, dan hindari mengunggah foto sensitif ke situs yang tidak dikenal.</p>`;
+return `<div class="note">Tool informasi dan demo aman. Fitur ini tidak mengakses akun, melacak orang, mengirim spam, atau mengambil data pribadi.</div><p>${t[5]}</p>`;
+}
+function wireTool(n){
+const $=id=>document.getElementById(id),out=$('out');
+if(n==="Password Gen"){$('generate').onclick=()=>{let len=Math.max(8,Math.min(64,+$('plen').value||18)),chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789"+($('symbols').checked?"!@#$%^&*()-_=+":"");let a=new Uint32Array(len);crypto.getRandomValues(a);out.textContent=Array.from(a,x=>chars[x%chars.length]).join('');};$('copyOut').onclick=()=>copy(out.textContent);}
+if(n==="Morse Code"){const map={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..',0:'-----',1:'.----',2:'..---',3:'...--',4:'....-',5:'.....',6:'-....',7:'--...',8:'---..',9:'----.'};$('convert').onclick=()=>{let s=$('source').value.trim();if($('direction').value==='encode')out.textContent=s.toUpperCase().split('').map(c=>c===' '?' / ':map[c]||'').join(' ');else{let rev=Object.fromEntries(Object.entries(map).map(([k,v])=>[v,k]));out.textContent=s.split(' / ').map(w=>w.trim().split(/\s+/).map(x=>rev[x]||'').join('')).join(' ');}};$('copyOut').onclick=()=>copy(out.textContent);}
+if(n==="Calculator")$('calculate').onclick=()=>{let s=$('calc').value;if(!/^[0-9+\-*/().%\s]+$/.test(s)){out.textContent="Ekspresi tidak valid";return;}try{let v=Function('"use strict";return ('+s+')')();out.textContent=Number.isFinite(v)?v:"Hasil tidak valid";}catch{out.textContent="Periksa kembali rumus";}};
+if(n==="QR Generator")$('makeqr').onclick=()=>{let v=$('qrtext').value.trim();if(!v){$('qrout').textContent="Masukkan teks terlebih dahulu.";return;}let img=document.createElement('img');img.alt="QR Code";img.style.cssText="display:block;width:210px;height:210px;margin:0 auto";img.src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data="+encodeURIComponent(v);$('qrout').replaceChildren(img);};
+if(["BRAT Generator","Windows Quotes","Sertifikat Tolol","Anime Quotes"].includes(n)){$('makeText').onclick=()=>{let v=$('source').value.trim();out.textContent=n==="Sertifikat Tolol"?"🏆 SERTIFIKAT BERCANDA 🏆\nDiberikan kepada: "+v+"\nAtas prestasi humor hari ini.":n==="Windows Quotes"?"▣  "+v+"\n— VIMAXX Quote":n==="BRAT Generator"?"🟩 "+v.toUpperCase(): "✦ "+v+" ✦";};$('copyOut').onclick=()=>copy(out.textContent);}
+if(n==="Get Code HTML"||n==="Get HTML/CSS/JS"){$('preview').onclick=()=>{$('previewFrame').srcdoc=$('code').value;};$('copyCode').onclick=()=>copy($('code').value);}
+if(n==="Text Case"){document.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>{let v=$('source').value;out.textContent=b.dataset.case==='upper'?v.toUpperCase():b.dataset.case==='lower'?v.toLowerCase():v.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());});}
+if(n==="Unit Converter")$('convertUnit').onclick=()=>{let v=+$('amount').value,u=$('unit').value;out.textContent=u==='km'?`${v} km = ${v*1000} meter`:u==='kg'?`${v} kg = ${v*1000} gram`:`${v}°C = ${(v*9/5+32).toFixed(2)}°F`;};
+if(n==="Color Picker")$('color').oninput=()=>out.textContent=$('color').value;
+if(n==="Notes")$('saveNote').onclick=()=>{try{localStorage.setItem('vimaxx-note',$('note').value);out.textContent="Catatan tersimpan di browser ini.";}catch{out.textContent="Penyimpanan tidak tersedia.";}};
+if(n==="Foto To Link"){$('photo').onchange=()=>{let f=$('photo').files[0];if(!f)return;let r=new FileReader();r.onload=()=>{out.textContent=String(r.result);};r.readAsDataURL(f);};$('copyOut').onclick=()=>copy(out.textContent);}
+if(["IQC Generator","Fake IG","Fake FF","Face Call","Fake MI","Fake Bank Jago","Fake Dana"].includes(n))$('mock').onclick=()=>out.textContent="DEMO PREVIEW\n"+($('mockname').value||"Nama Fiktif")+"\n\nSIMULASI — BUKAN LAYANAN ASLI";
+}
+function copy(v){if(!v)return;navigator.clipboard?.writeText(v).then(()=>alert("Berhasil disalin")).catch(()=>alert("Salin manual teks yang tersedia."));}
+document.getElementById('closeModal').onclick=()=>overlay.classList.remove('show');overlay.onclick=e=>{if(e.target===overlay)overlay.classList.remove('show')};
+document.getElementById('refreshBtn').onclick=()=>{search.value='';category='ALL';renderFilters();render();};
+document.getElementById('themeBtn').onclick=()=>document.body.classList.toggle('light');
+document.getElementById('menuBtn').onclick=()=>{category='ALL';search.value='';renderFilters();render();window.scrollTo({top:0,behavior:'smooth'});};
+document.getElementById('chatBtn').onclick=()=>showInfo("Chat","Area chat dapat dihubungkan ke backend milikmu. Versi ini tidak mengirim pesan ke server.");
+document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-nav]').forEach(x=>x.classList.remove('active'));b.classList.add('active');if(b.dataset.nav==='tools'){document.getElementById('filters').scrollIntoView({behavior:'smooth'});}else if(b.dataset.nav==='profile')showInfo("Profil","VIMAXX • VIP Tools\\nVersi 1.0 • Mode lokal");else if(b.dataset.nav==='chat')showInfo("Chat","Fitur chat demo. Tidak mengirim pesan.");else window.scrollTo({top:0,behavior:'smooth'});});
+function showInfo(title,body){modalTitle.textContent=title;modalBody.innerHTML='<p>'+body+'</p>';overlay.classList.add('show');}
+document.getElementById('musicBtn').onclick=()=>showInfo("Audio","Tombol audio siap dihubungkan ke file musik milikmu.");
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();search.focus();}if(e.key==='Escape')overlay.classList.remove('show');});
+
+// ===== VIMAXX FULL-STACK API =====
+// Set channel URLs in public/config.js after deployment.
+let authToken = localStorage.getItem('vimaxx-token') || '';
+let currentUser = null;
+async function api(path, options={}) {
+  const headers = {'Content-Type':'application/json', ...(options.headers||{})};
+  if (authToken) headers.Authorization = 'Bearer ' + authToken;
+  const res = await fetch('/api' + path, {...options, headers});
+  const data = await res.json().catch(()=>({error:'Respons server tidak valid'}));
+  if (!res.ok) throw new Error(data.error || 'Permintaan gagal');
+  return data;
+}
+function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+async function loadCurrentUser(){
+  if(!authToken) return;
+  try { const d=await api('/me'); currentUser=d.user; }
+  catch(e){authToken='';localStorage.removeItem('vimaxx-token');currentUser=null;}
+}
+function openAccount(){
+  modalTitle.textContent=currentUser?'Akun VIMAXX':'Masuk / Daftar';
+  if(currentUser){
+    modalBody.innerHTML=`<p>Login sebagai <b>${safeText(currentUser.username)}</b></p>
+      <div class="row"><button class="action" id="showHistory">Riwayat tools</button><button class="action secondary" id="logout">Keluar</button></div>
+      <h3>Catatan tersimpan</h3><textarea class="field" id="cloudNote" rows="4" placeholder="Catatan tersimpan di database..."></textarea>
+      <button class="action" id="saveCloudNote">Simpan catatan</button><div class="result" id="accountResult"></div>`;
+    document.getElementById('logout').onclick=()=>{authToken='';currentUser=null;localStorage.removeItem('vimaxx-token');openAccount();};
+    document.getElementById('saveCloudNote').onclick=async()=>{try{await api('/notes',{method:'POST',body:JSON.stringify({content:document.getElementById('cloudNote').value})});document.getElementById('accountResult').textContent='Catatan tersimpan di database.';}catch(e){document.getElementById('accountResult').textContent=e.message;}};
+    document.getElementById('showHistory').onclick=async()=>{try{let d=await api('/activity');document.getElementById('accountResult').textContent=d.items.map(x=>x.tool_name+' • '+new Date(x.created_at).toLocaleString()).join('\\n')||'Belum ada riwayat.';}catch(e){document.getElementById('accountResult').textContent=e.message;}};
+    api('/notes').then(d=>{document.getElementById('cloudNote').value=d.note?.content||'';}).catch(()=>{});
+  } else {
+    modalBody.innerHTML=`<p>Akun diperlukan hanya untuk menyimpan catatan dan riwayat. Semua tools tetap bisa digunakan tanpa login.</p>
+      <label>Username</label><input class="field" id="authUser" minlength="3" maxlength="24" autocomplete="username" placeholder="Username">
+      <label>Password</label><input class="field" id="authPass" type="password" minlength="8" autocomplete="current-password" placeholder="Minimal 8 karakter">
+      <div class="row"><button class="action" id="login">Masuk</button><button class="action secondary" id="register">Daftar</button></div><div class="result" id="accountResult"></div>`;
+    async function auth(mode){const result=document.getElementById('accountResult');try{let d=await api('/auth/'+mode,{method:'POST',body:JSON.stringify({username:document.getElementById('authUser').value,password:document.getElementById('authPass').value})});authToken=d.token;localStorage.setItem('vimaxx-token',authToken);currentUser=d.user;openAccount();}catch(e){result.textContent=e.message;}}
+    document.getElementById('login').onclick=()=>auth('login');
+    document.getElementById('register').onclick=()=>auth('register');
+  }
+  overlay.classList.add('show');
+}
+document.getElementById('accountBtn')?.addEventListener('click',openAccount);
+document.querySelectorAll('[data-nav="profile"]').forEach(b=>b.addEventListener('click',openAccount));
+document.addEventListener('click',e=>{
+ const card=e.target.closest('[data-tool]');
+ if(card && authToken){const t=tools[Number(card.dataset.tool)];if(t)api('/activity',{method:'POST',body:JSON.stringify({tool_name:t[0]})}).catch(()=>{});}
+});
+fetch('/config.json').then(r=>r.json()).then(c=>{
+ if(c.channel1)document.getElementById('channel1').href=c.channel1;
+ if(c.channel2)document.getElementById('channel2').href=c.channel2;
+}).catch(()=>{});
+loadCurrentUser();
+
+renderFilters();render();
+</script>
+</body></html>
